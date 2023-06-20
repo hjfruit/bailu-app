@@ -1,6 +1,6 @@
 {
   "name": "@fruits-chain/sop-pro",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "A higher abstracted component for sop",
   "scripts": {
     "clean": "rimraf lib",
@@ -24,22 +24,22 @@
     "lib"
   ],
   "peerDependencies": {
-    "@fruits-chain/sop": "^1.0.0",
-    "@fruits-chain/upload": "^1.0.0",
     "@apollo/client": "3.7.1",
     "@fruits-chain/react-native-upload": "^2.2.0",
     "@fruits-chain/react-native-xiaoshu": "^0.3.12",
+    "@fruits-chain/sop": "^1.0.0",
+    "@fruits-chain/upload": "^1.0.0",
     "react": "^18.2.0",
     "react-native": "^0.71.10",
     "react-native-extended-stylesheet": "^0.12.0"
   },
   "devDependencies": {
-    "@fruits-chain/sop": "^1.0.0",
-    "@fruits-chain/upload": "^1.0.0",
     "@apollo/client": "3.7.1",
+    "@fruits-chain/graphql-codegen-preset": "^0.3.1",
     "@fruits-chain/react-native-upload": "^2.2.0",
     "@fruits-chain/react-native-xiaoshu": "^0.3.12",
-    "@fruits-chain/graphql-codegen-preset": "^0.3.1",
+    "@fruits-chain/sop": "^1.0.0",
+    "@fruits-chain/upload": "^1.0.0",
     "@types/react": "^18.2.9",
     "graphql": "^16.6.0",
     "react": "^18.2.0",
