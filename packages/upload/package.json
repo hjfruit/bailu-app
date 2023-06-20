@@ -1,0 +1,45 @@
+{
+  "name": "@fruits-chain/upload",
+  "version": "1.0.0",
+  "description": "A component for upload",
+  "scripts": {
+    "clean": "rimraf lib",
+    "lint": "eslint",
+    "dev": "yarn clean && rollup -c -w",
+    "build-bundle": "rollup -c",
+    "build": "run-s lint clean build-bundle"
+  },
+  "keywords": [
+    "react-native",
+    "hj",
+    "upload"
+  ],
+  "author": "changhuali <changhua.li.cq@gmail.com>",
+  "license": "MIT",
+  "main": "lib/commonjs/index.js",
+  "module": "lib/module/index.js",
+  "types": "lib/index.d.ts",
+  "files": [
+    "lib"
+  ],
+  "peerDependencies": {
+    "@fruits-chain/react-native-upload": "^2.2.0",
+    "@fruits-chain/react-native-xiaoshu": "^0.3.12",
+    "@react-native-async-storage/async-storage": "^1.18.2",
+    "lodash": "^4.17.21",
+    "react": "^18.2.0",
+    "react-native": "^0.71.10",
+    "zustand": "^3.0.0"
+  },
+  "devDependencies": {
+    "@fruits-chain/react-native-upload": "^2.2.0",
+    "@fruits-chain/react-native-xiaoshu": "^0.3.12",
+    "@react-native-async-storage/async-storage": "^1.18.2",
+    "@types/lodash": "^4.14.195",
+    "@types/react": "^18.2.9",
+    "lodash": "^4.17.21",
+    "react": "^18.2.0",
+    "react-native": "^0.71.10",
+    "zustand": "^3.0.0"
+  }
+}

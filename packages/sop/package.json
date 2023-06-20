@@ -1,0 +1,47 @@
+{
+  "name": "@fruits-chain/sop",
+  "version": "1.0.0",
+  "description": "A component for sop",
+  "scripts": {
+    "clean": "rimraf lib",
+    "lint": "eslint",
+    "dev": "yarn clean && rollup -c -w",
+    "build-bundle": "rollup -c",
+    "build": "run-s lint clean build-bundle",
+    "gen": "fruits-chain-gc http://192.168.10.235:4001/graphql --folder src/graphql"
+  },
+  "keywords": [
+    "react-native",
+    "hj",
+    "sop"
+  ],
+  "author": "changhuali <changhua.li.cq@gmail.com>",
+  "license": "MIT",
+  "main": "lib/commonjs/index.js",
+  "module": "lib/module/index.js",
+  "types": "lib/index.d.ts",
+  "files": [
+    "lib"
+  ],
+  "peerDependencies": {
+    "@fruits-chain/react-native-upload": "^2.2.0",
+    "@fruits-chain/react-native-xiaoshu": "^0.3.12",
+    "@fruits-chain/upload": "^1.0.0",
+    "rc-field-form": "^1.32.0",
+    "react": "^18.2.0",
+    "react-native": "^0.71.10",
+    "react-native-extended-stylesheet": "^0.12.0"
+  },
+  "devDependencies": {
+    "@fruits-chain/react-native-upload": "^2.2.0",
+    "@fruits-chain/graphql-codegen-preset": "^0.3.1",
+    "@fruits-chain/upload": "^1.0.0",
+    "@fruits-chain/react-native-xiaoshu": "^0.3.12",
+    "@types/react": "^18.2.9",
+    "graphql": "^16.6.0",
+    "rc-field-form": "^1.32.0",
+    "react": "^18.2.0",
+    "react-native": "^0.71.10",
+    "react-native-extended-stylesheet": "^0.12.0"
+  }
+}

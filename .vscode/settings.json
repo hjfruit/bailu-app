@@ -1,0 +1,6 @@
+{
+  "cSpell.words": ["commitlint", "deepmerge"],
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  }
+}
