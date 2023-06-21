@@ -3,17 +3,22 @@ import { Empty, Toast } from '@fruits-chain/react-native-xiaoshu'
 import React, { forwardRef, useImperativeHandle } from 'react'
 
 import { SopForm, useSopForm } from '@fruits-chain/sop'
-import type { SopFormInstance } from '@fruits-chain/sop'
+import { useBackUploadManager } from '@fruits-chain/upload'
+import {
+  CacheAnswerDocument,
+  UpdateSubmitAnswerDocument,
+} from './graphql/operations/__generated__/common.generated'
+import { format } from './helpers'
+import useSopRequest from './useSopRequest'
 import type {
   CacheAnswerMutation,
   CacheAnswerMutationVariables,
+  UpdateSubmitAnswerMutation,
+  UpdateSubmitAnswerMutationVariables,
 } from './graphql/operations/__generated__/common.generated'
-import { CacheAnswerDocument } from './graphql/operations/__generated__/common.generated'
+import type { SopFormInstance } from '@fruits-chain/sop'
 
-import { format } from './helpers'
 import type { RequestResult } from './useSopRequest'
-import useSopRequest from './useSopRequest'
-import { useBackUploadManager } from '@fruits-chain/upload'
 
 interface IProps {
   uuid: string
@@ -31,6 +36,12 @@ export interface SopFormProState extends RequestResult {
    * - false 请求失败
    */
   requestTempSave: () => Promise<boolean>
+  /**
+   * 向中台请求暂存
+   * - true 请求成功
+   * - false 请求失败
+   */
+  requestSave: () => Promise<boolean>
   /** 清除后台上传图片缓存 */
   clear: () => void
 }
@@ -82,9 +93,41 @@ const SopFormPro = forwardRef<SopFormProState, IProps>(
             form.strictValidation = true
           })
       },
+      requestSave() {
+        const { close } = Toast.loading('保存中...')
+        form.strictValidation = true
+        return form
+          .validateFields()
+          .then(values => {
+            return client.query<
+              UpdateSubmitAnswerMutation,
+              UpdateSubmitAnswerMutationVariables
+            >({
+              query: UpdateSubmitAnswerDocument,
+              variables: {
+                input: {
+                  businessId,
+                  result: format(values),
+                },
+              },
+            })
+          })
+          .then(() => {
+            setFinishedTask(uuid)
+            Toast.success('保存成功')
+            return Promise.resolve(true)
+          })
+          .catch(() => {
+            return Promise.resolve(false)
+          })
+          .finally(() => {
+            close()
+            form.strictValidation = true
+          })
+      },
       clear() {
         setFinishedTask(uuid)
-      }
+      },
     }))
 
     const { loading, data, error } = useSopRequest(businessId, sopIds)

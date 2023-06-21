@@ -69,6 +69,10 @@ const Demo = () => {
 
 > 请求暂存, 返回一个`Promise<bool>`对象, 成功结果为`true`, 失败结果为`false`
 
+**requestSave**
+
+> 请求保存, 返回一个`Promise<bool>`对象, 成功结果为`true`, 失败结果为`false`
+
 **clear**
 
 > 清除当前表单内后台上传存储的本地资源，比如当用户已经将数据同步到后端后，应该手动调用此方法
