@@ -17,6 +17,15 @@
   ],
   "author": "changhuali <changhua.li.cq@gmail.com>",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hjfruit/bailu-app",
+    "directory": "packages/sop-pro"
+  },
+  "bugs": {
+    "url": "https://github.com/hjfruit/bailu-app/issues"
+  },
+  "homepage": "https://github.com/hjfruit/bailu-app/tree/master/packages/sop-pro#readme",
   "main": "lib/commonjs/index.js",
   "module": "lib/module/index.js",
   "types": "lib/index.d.ts",

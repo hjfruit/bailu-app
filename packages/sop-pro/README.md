@@ -27,7 +27,7 @@ const Demo = () => {
   return (
     <Form
       ref={sopFormRef}
-      title={'每个模板的tile'} // 可以为render函数
+      title={'每个模板的title'} // 可以为render函数
       uuid={'全局唯一id'} // 推荐由路由+业务id+操作类型组成
       businessId={'业务id'}
       sopIds={'SOP ID组成的数组'}
@@ -49,7 +49,7 @@ import { Preview } from '@fruits-chain/sop-pro'
 const Demo = () => {
   return (
     <Preview
-      title={'每个模板的tile'}
+      title={'每个模板的title'}
       businessId={'业务id'}
       sopIds={'SOP ID组成的数组'}
     />
@@ -63,7 +63,7 @@ const Demo = () => {
 
 **form**
 
-> 表单实例, 相较`xiaoshu`, 其多了一个属性`strictValidation`, 其值为`bool`类型, 用来控制表单是否需要严格校验, 在调用`form.validateFields`方法时, 用户应该手动设置该属性的值
+> `SopForm`表单`form`属性实例
 
 **requestTempSave**
 
