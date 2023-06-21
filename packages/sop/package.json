@@ -1,6 +1,6 @@
 {
   "name": "@fruits-chain/sop",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A component for sop",
   "scripts": {
     "clean": "rimraf lib",
@@ -45,7 +45,7 @@
     "@fruits-chain/graphql-codegen-preset": "^0.3.1",
     "@fruits-chain/react-native-upload": "^2.2.0",
     "@fruits-chain/react-native-xiaoshu": "^0.3.12",
-    "@fruits-chain/upload": "^1.0.0",
+    "@fruits-chain/upload": "^1.0.1",
     "@types/react": "^18.2.9",
     "graphql": "^16.6.0",
     "rc-field-form": "^1.32.0",
