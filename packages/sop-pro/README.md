@@ -71,7 +71,7 @@ const Demo = () => {
 
 **requestSave**
 
-> 请求保存, 返回一个`Promise<bool>`对象, 成功结果为`true`, 失败结果为`false`
+> 请求保存修改后的数据, 返回一个`Promise<bool>`对象, 成功结果为`true`, 失败结果为`false`
 
 **clear**
 
