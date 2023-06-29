@@ -1,13 +1,8 @@
 import { Form, Collapse, Card, Space } from '@fruits-chain/react-native-xiaoshu'
 import React, { useEffect } from 'react'
-import type { FC, ReactNode } from 'react'
 import { View } from 'react-native'
 
 import { InputTextRule, SopCheckItemEnum } from './graphql/generated/types'
-import type {
-  SopCheckItemResultPayload,
-  SopDetailResultPayload,
-} from './graphql/generated/types'
 
 import CheckboxPreview from './questions/checkbox.preview'
 import DatePreview from './questions/date.preview'
@@ -16,6 +11,11 @@ import NumberPreview from './questions/number.preview'
 import RadioPreview from './questions/radio.preview'
 import TextPreview from './questions/text.preview'
 import { data2formValues } from './helpers'
+import type {
+  SopCheckItemResultPayload,
+  SopDetailResultPayload,
+} from './graphql/generated/types'
+import type { FC, ReactNode } from 'react'
 
 interface IProps {
   /** 数据是否加载中 */
@@ -132,6 +132,7 @@ const SopPreview: FC<IProps> = ({ loading, title, data, wrapper }) => {
                 title={
                   typeof title === 'function' ? title(templateData) : title
                 }
+                defaultCollapse={true}
                 titleTextStyle={{ fontWeight: 'bold', fontSize: 18 }}>
                 <View style={{ paddingHorizontal: 12, paddingVertical: 16 }}>
                   {templateContentJSX}

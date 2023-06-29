@@ -183,7 +183,7 @@ const SopForm: FC<IProps> = ({
               <Collapse
                 key={templateData.sopId}
                 bodyPadding={false}
-                defaultCollapse={false}
+                defaultCollapse={true}
                 title={
                   typeof title === 'function' ? title(templateData) : title
                 }
