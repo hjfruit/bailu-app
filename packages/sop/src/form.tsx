@@ -5,14 +5,9 @@ import {
   Card,
 } from '@fruits-chain/react-native-xiaoshu'
 import React, { Fragment, useEffect, useMemo } from 'react'
-import type { FC, ReactNode } from 'react'
 import { View } from 'react-native'
 
 import { InputTextRule, SopCheckItemEnum } from './graphql/generated/types'
-import type {
-  SopCheckItemResultPayload,
-  SopDetailResultPayload,
-} from './graphql/generated/types'
 
 import CheckboxFormItem from './questions/checkbox'
 import DateFormItem from './questions/date'
@@ -21,6 +16,11 @@ import NumberFormItem from './questions/number'
 import RadioFormItem from './questions/radio'
 import TextFormItem from './questions/text'
 import { data2formValues } from './helpers'
+import type {
+  SopCheckItemResultPayload,
+  SopDetailResultPayload,
+} from './graphql/generated/types'
+import type { FC, ReactNode } from 'react'
 
 interface IProps {
   /** 表单唯一标识（全局唯一） */
@@ -183,6 +183,7 @@ const SopForm: FC<IProps> = ({
               <Collapse
                 key={templateData.sopId}
                 bodyPadding={false}
+                defaultCollapse={false}
                 title={
                   typeof title === 'function' ? title(templateData) : title
                 }
