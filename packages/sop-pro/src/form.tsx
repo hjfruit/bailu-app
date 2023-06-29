@@ -44,6 +44,12 @@ export interface SopFormProState extends RequestResult {
   requestSave: () => Promise<boolean>
   /** 清除后台上传图片缓存 */
   clear: () => void
+  /**
+   * 刷新数据(模板+答案)
+   * - true 刷新成功
+   * - false 刷新失败
+   */
+  refresh: () => Promise<boolean>
 }
 
 /**
@@ -60,6 +66,7 @@ const SopFormPro = forwardRef<SopFormProState, IProps>(
       loading,
       error,
       data,
+      refresh,
       form,
       requestTempSave() {
         const { close } = Toast.loading('暂存中...')
@@ -130,7 +137,7 @@ const SopFormPro = forwardRef<SopFormProState, IProps>(
       },
     }))
 
-    const { loading, data, error } = useSopRequest(businessId, sopIds)
+    const { loading, data, error, refresh } = useSopRequest(businessId, sopIds)
 
     if (!sopIds?.length) return null
     if (error) return <Empty text={`${title}数据加载异常`} />

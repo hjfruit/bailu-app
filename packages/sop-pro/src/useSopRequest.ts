@@ -1,12 +1,12 @@
 import { useApolloClient } from '@apollo/client'
-import { useLayoutEffect, useMemo, useState } from 'react'
-import { SopDetailResultPayload } from './graphql/generated/types'
+import { useCallback, useLayoutEffect, useMemo, useState } from 'react'
+import { GetSopOrResultDocument } from './graphql/operations/__generated__/common.generated'
+import type { SopDetailResultPayload } from './graphql/generated/types'
 
 import type {
   GetSopOrResultQuery,
   GetSopOrResultQueryVariables,
 } from './graphql/operations/__generated__/common.generated'
-import { GetSopOrResultDocument } from './graphql/operations/__generated__/common.generated'
 
 export interface RequestResult {
   /** sop请求是否loading */
@@ -28,8 +28,8 @@ export default (businessId: string, sopIds: string[]) => {
     error: false,
     data: [],
   })
-  useLayoutEffect(() => {
-    if (!sopIds?.length) return
+
+  const refresh = useCallback(() => {
     setRequestResult({
       loading: true,
       error: false,
@@ -46,17 +46,19 @@ export default (businessId: string, sopIds: string[]) => {
         },
       }),
     )
-    Promise.all(requestList)
+    return Promise.all(requestList)
       .then(resp => {
         setRequestResult({
           loading: false,
           error: false,
           // eslint-disable-next-line max-nested-callbacks
-          data: resp?.map(res => {
-            const resItem = res.data.getSopOrResult
-            return resItem
-          }) || [],
+          data:
+            resp?.map(res => {
+              const resItem = res.data.getSopOrResult
+              return resItem
+            }) || [],
         })
+        return true
       })
       .catch(() => {
         setRequestResult({
@@ -64,13 +66,17 @@ export default (businessId: string, sopIds: string[]) => {
           error: true,
           data: [],
         })
+        return false
       })
-      .finally(() => {})
   }, [businessId, client, sopIds])
+  useLayoutEffect(() => {
+    if (!sopIds?.length) return
+    refresh()
+  }, [refresh, sopIds?.length])
 
   const result = useMemo(
-    () => ({ loading, error, data }),
-    [data, error, loading],
+    () => ({ loading, error, data, refresh }),
+    [data, error, loading, refresh],
   )
 
   return result
