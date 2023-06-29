@@ -74,11 +74,11 @@ const SopFormPro = forwardRef<SopFormProState, IProps>(
         return form
           .validateFields()
           .then(values => {
-            return client.query<
+            return client.mutate<
               CacheAnswerMutation,
               CacheAnswerMutationVariables
             >({
-              query: CacheAnswerDocument,
+              mutation: CacheAnswerDocument,
               variables: {
                 input: {
                   businessId,
@@ -106,11 +106,11 @@ const SopFormPro = forwardRef<SopFormProState, IProps>(
         return form
           .validateFields()
           .then(values => {
-            return client.query<
+            return client.mutate<
               UpdateSubmitAnswerMutation,
               UpdateSubmitAnswerMutationVariables
             >({
-              query: UpdateSubmitAnswerDocument,
+              mutation: UpdateSubmitAnswerDocument,
               variables: {
                 input: {
                   businessId,
