@@ -1,6 +1,5 @@
 import { Form, Space } from '@fruits-chain/react-native-xiaoshu'
 import React from 'react'
-import type { FC } from 'react'
 
 import BackUpload from '@fruits-chain/upload'
 
@@ -8,8 +7,9 @@ import { fieldKeyMap, maybeRules } from '../helpers'
 
 import Tips from './components/tips'
 import Title from './components/title'
+import type { FC } from 'react'
 import type { CommonProps } from './interface'
-import { UploadItems } from '@/interface'
+import type { UploadItems } from '@/interface'
 
 interface IProps extends CommonProps {}
 
@@ -54,6 +54,7 @@ const FileFormItem: FC<IProps> = ({
         <BackUpload
           groupUuid={formUuid}
           uuid={uuid}
+          cropPickerMediaType="any"
           backUpload={backUpload}
           maxCount={10}
           tipText="图片/视频"
