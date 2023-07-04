@@ -1,6 +1,5 @@
 import { Field, Form, Space } from '@fruits-chain/react-native-xiaoshu'
 import React from 'react'
-import type { FC } from 'react'
 
 import { fieldKeyMap, maybeRules } from '../helpers'
 
@@ -8,7 +7,9 @@ import Option from './components/option'
 import Textarea from './components/textarea'
 import Title from './components/title'
 import FileRemarkFormItem from './file-remark'
+import Tips from './components/tips'
 import type { CommonProps } from './interface'
+import type { FC } from 'react'
 
 interface IProps extends CommonProps {}
 
@@ -71,6 +72,7 @@ const RadioFormItem: FC<IProps> = ({
                 {...restProps}
               />
             </Form.Item>
+            {!!question.remarks && <Tips text={question.remarks} />}
             {selectedOption?.isRemark && (
               <Form.Item
                 name={[...name, 'remark']}
