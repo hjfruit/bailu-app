@@ -1,13 +1,13 @@
 import { Field, Form, Space } from '@fruits-chain/react-native-xiaoshu'
 import dayjs from 'dayjs'
 import React from 'react'
-import type { FC } from 'react'
 
 import { fieldKeyMap, maybeRules } from '../helpers'
 
 import Tips from './components/tips'
 import Title from './components/title'
 import FileRemarkFormItem from './file-remark'
+import type { FC } from 'react'
 import type { CommonProps } from './interface'
 
 interface IProps extends CommonProps {}

@@ -32,7 +32,7 @@ const CheckboxFormItem: FC<IProps> = ({
     }) || []
 
   return (
-    <Space head={8} tail={question.isRemark ? 12 : 8} gap={12}>
+    <Space gap={0} head={8} tail={12}>
       <Form.Item
         name={[...name, 'checkResult', fieldKeyMap[question.type]]}
         rules={maybeRules(question.required, [
@@ -62,18 +62,20 @@ const CheckboxFormItem: FC<IProps> = ({
           {...restProps}
         />
       </Form.Item>
-      {!!question.remarks && <Tips text={question.remarks} />}
-      {question.isRemark && (
-        <FileRemarkFormItem
-          form={form}
-          formUuid={formUuid}
-          uuid={uuid}
-          backUpload={backUpload}
-          question={question}
-          namePrefix={namePrefix}
-          name={name}
-        />
-      )}
+      <Space gap={12}>
+        {!!question.remarks && <Tips text={question.remarks} />}
+        {question.isRemark && (
+          <FileRemarkFormItem
+            form={form}
+            formUuid={formUuid}
+            uuid={uuid}
+            backUpload={backUpload}
+            question={question}
+            namePrefix={namePrefix}
+            name={name}
+          />
+        )}
+      </Space>
     </Space>
   )
 }

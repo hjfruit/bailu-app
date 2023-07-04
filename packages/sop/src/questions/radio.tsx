@@ -42,7 +42,7 @@ const RadioFormItem: FC<IProps> = ({
           item => item.value === selectedValue,
         )
         return (
-          <Space head={8} gap={12} tail={question.isRemark ? 12 : 8}>
+          <Space gap={0} head={8} tail={12}>
             <Form.Item
               name={namePath}
               rules={maybeRules(question.required, [
@@ -72,32 +72,34 @@ const RadioFormItem: FC<IProps> = ({
                 {...restProps}
               />
             </Form.Item>
-            {!!question.remarks && <Tips text={question.remarks} />}
-            {selectedOption?.isRemark && (
-              <Form.Item
-                name={[...name, 'remark']}
-                rules={[
-                  ...maybeRules(selectedOption.remarkRequired, [
-                    () => ({
-                      required: form.strictValidation,
-                      message: `请输入[${question.name}]备注`,
-                    }),
-                  ]),
-                ]}>
-                <Textarea />
-              </Form.Item>
-            )}
-            {question.isRemark && (
-              <FileRemarkFormItem
-                form={form}
-                formUuid={formUuid}
-                uuid={uuid}
-                backUpload={backUpload}
-                question={question}
-                namePrefix={namePrefix}
-                name={name}
-              />
-            )}
+            <Space gap={12}>
+              {!!question.remarks && <Tips text={question.remarks} />}
+              {selectedOption?.isRemark && (
+                <Form.Item
+                  name={[...name, 'remark']}
+                  rules={[
+                    ...maybeRules(selectedOption.remarkRequired, [
+                      () => ({
+                        required: form.strictValidation,
+                        message: `请输入[${question.name}]备注`,
+                      }),
+                    ]),
+                  ]}>
+                  <Textarea />
+                </Form.Item>
+              )}
+              {question.isRemark && (
+                <FileRemarkFormItem
+                  form={form}
+                  formUuid={formUuid}
+                  uuid={uuid}
+                  backUpload={backUpload}
+                  question={question}
+                  namePrefix={namePrefix}
+                  name={name}
+                />
+              )}
+            </Space>
           </Space>
         )
       }}
