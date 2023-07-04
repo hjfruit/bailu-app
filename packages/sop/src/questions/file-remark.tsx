@@ -1,14 +1,14 @@
 import { Form } from '@fruits-chain/react-native-xiaoshu'
 import React from 'react'
-import type { FC } from 'react'
 
 import Upload from '@fruits-chain/upload'
 import { SopCheckItemEnum } from '../graphql/generated/types'
 
 import { fieldKeyMap, maybeRules } from '../helpers'
 
+import type { UploadItems } from '../interface'
 import type { CommonProps } from './interface'
-import { UploadItems } from '../interface'
+import type { FC } from 'react'
 
 interface IProps extends CommonProps {}
 
@@ -48,6 +48,13 @@ const FileRemarkFormItem: FC<IProps> = ({
       <Upload
         groupUuid={formUuid}
         uuid={uuid}
+        cropPickerMediaType="any"
+        pickerType={[
+          'cropPicker',
+          'cropCameraPhoto',
+          'cropCameraVideo',
+          'visionCamera',
+        ]}
         backUpload={backUpload}
         maxCount={10}
         tipText="图片/视频"
