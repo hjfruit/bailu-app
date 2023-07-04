@@ -55,6 +55,12 @@ const FileFormItem: FC<IProps> = ({
           groupUuid={formUuid}
           uuid={uuid}
           cropPickerMediaType="any"
+          pickerType={[
+            'cropPicker',
+            'cropCameraPhoto',
+            'cropCameraVideo',
+            'visionCamera',
+          ]}
           backUpload={backUpload}
           maxCount={10}
           tipText="图片/视频"
