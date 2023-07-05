@@ -1,0 +1,63 @@
+# 获取sop或答案
+query getSopOrResult($input: GetSopOrResultInput) {
+  getSopOrResult(input: $input) {
+    category {
+      categoryName
+      id
+    }
+    enabled
+    enabledName
+    sopCheckItems {
+      enabled
+      enabledName
+      inputTextRule
+      isRemark
+      name
+      nameLocale
+      options {
+        isRemark
+        name
+        nameLocale
+        remarkRequired
+        remarks
+        sort
+        value
+      }
+      remarkRequired
+      remarks
+      required
+      snapshotId
+      sopDetailId
+      sopId
+      sopResult {
+        businessId
+        cacheEnabled
+        checkResult
+        checkResultType
+        fileLink
+        remark
+        sopDetailId
+        sopId
+        sopResultId
+        userId
+      }
+      sort
+      type
+      typeName
+    }
+    sopId
+    templateDesc
+    templateName
+    universal
+  }
+}
+
+# 暂存答案
+mutation cacheAnswer($input: CacheAnswerInput) {
+  cacheAnswer(input: $input)
+}
+
+# 修改已提交的答案
+mutation updateSubmitAnswer($input: UpdateSubmitAnswerInput) {
+  updateSubmitAnswer(input: $input)
+}
