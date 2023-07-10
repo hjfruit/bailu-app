@@ -1,10 +1,10 @@
+import AsyncStorage from '@react-native-async-storage/async-storage'
+import create from 'zustand'
+import { persist } from 'zustand/middleware'
 import type {
   UploadAction,
   UploadItem,
 } from '@fruits-chain/react-native-upload'
-import AsyncStorage from '@react-native-async-storage/async-storage'
-import create from 'zustand'
-import { persist } from 'zustand/middleware'
 
 type UUID = string
 

@@ -1,10 +1,10 @@
 import React from 'react'
-import type { FC } from 'react'
 
 import { fieldKeyMap, maybeTips } from '../helpers'
 
 import ContentPreview from './components/content.preview'
 import TitlePreview from './components/title.preview'
+import type { FC } from 'react'
 import type { PreviewCommonProps } from './interface'
 
 interface IProps extends PreviewCommonProps {}

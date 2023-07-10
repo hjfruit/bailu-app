@@ -1,6 +1,6 @@
 import React from 'react'
-import type { FC } from 'react'
 import { View, Text } from 'react-native'
+import type { FC } from 'react'
 
 interface IProps {
   option: {

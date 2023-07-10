@@ -21,6 +21,7 @@ const RadioFormItem: FC<IProps> = ({
   question,
   namePrefix,
   name,
+  watermark,
   ...restProps
 }) => {
   const options =
@@ -91,6 +92,7 @@ const RadioFormItem: FC<IProps> = ({
               {question.isRemark && (
                 <FileRemarkFormItem
                   form={form}
+                  watermark={watermark}
                   formUuid={formUuid}
                   uuid={uuid}
                   backUpload={backUpload}

@@ -20,6 +20,7 @@ const DateFormItem: FC<IProps> = ({
   question,
   namePrefix,
   name,
+  watermark,
   ...restProps
 }) => {
   const namePath = [...name, 'checkResult', fieldKeyMap[question.type]]
@@ -76,6 +77,7 @@ const DateFormItem: FC<IProps> = ({
           {question.isRemark && (
             <FileRemarkFormItem
               form={form}
+              watermark={watermark}
               formUuid={formUuid}
               uuid={uuid}
               backUpload={backUpload}

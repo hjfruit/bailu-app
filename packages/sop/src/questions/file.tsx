@@ -19,6 +19,7 @@ const FileFormItem: FC<IProps> = ({
   uuid,
   backUpload,
   question,
+  watermark,
   name,
 }) => {
   return (
@@ -54,6 +55,7 @@ const FileFormItem: FC<IProps> = ({
         <BackUpload
           groupUuid={formUuid}
           uuid={uuid}
+          watermark={watermark}
           cropPickerMediaType="any"
           pickerType={[
             'cropPicker',

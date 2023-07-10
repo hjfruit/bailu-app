@@ -1,10 +1,7 @@
+import { InputTextRule, SopCheckItemEnum } from './graphql/generated/types'
+import type { SopDetailResultPayload } from './graphql/generated/types'
 import type { Rule } from '@fruits-chain/react-native-xiaoshu'
 import type { FileVO } from '@fruits-chain/react-native-upload'
-import {
-  InputTextRule,
-  SopCheckItemEnum,
-  SopDetailResultPayload,
-} from './graphql/generated/types'
 
 export const maybeRules = (flag: boolean, rules: Rule[]) => {
   if (flag) return rules
@@ -50,17 +47,24 @@ export type FieldKey =
 
 const files2uploadList = (files: FileVO[], conversion: boolean) => {
   return (
-    files?.map(file => conversion ? ({
-      key: file?.fileId,
-      filepath: file?.fileUrl,
-      previewPath: file?.fileUrl,
-      status: 'done',
-      origin: file,
-    }) : file) || []
+    files?.map(file =>
+      conversion
+        ? {
+            key: file?.fileId,
+            filepath: file?.fileUrl,
+            previewPath: file?.fileUrl,
+            status: 'done',
+            origin: file,
+          }
+        : file,
+    ) || []
   )
 }
 
-export const data2formValues = (data: SopDetailResultPayload[], file2uploadItem: boolean = true) => {
+export const data2formValues = (
+  data: SopDetailResultPayload[],
+  file2uploadItem = true,
+) => {
   return (
     data?.map(template => ({
       ...template,
@@ -89,7 +93,7 @@ export const data2formValues = (data: SopDetailResultPayload[], file2uploadItem:
               fileLink: {
                 [fieldKeyMap[SopCheckItemEnum.FileType]]: files2uploadList(
                   question.sopResult?.fileLink?.[SopCheckItemEnum.FileType],
-                  file2uploadItem
+                  file2uploadItem,
                 ),
               },
               checkResult: { [key]: value },

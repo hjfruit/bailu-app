@@ -1,7 +1,7 @@
 import React from 'react'
+import { View, Text } from 'react-native'
 import type { FC } from 'react'
 import type { ViewProps } from 'react-native'
-import { View, Text } from 'react-native'
 
 interface IProps extends ViewProps {
   text: string

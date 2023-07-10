@@ -10,6 +10,8 @@ import {
 } from './graphql/operations/__generated__/common.generated'
 import { format } from './helpers'
 import useSopRequest from './useSopRequest'
+import useWatermark from './useWatermark'
+import type { Watermark } from './useWatermark'
 import type {
   CacheAnswerMutation,
   CacheAnswerMutationVariables,
@@ -25,6 +27,7 @@ interface IProps {
   businessId: string
   sopIds: string[]
   title: string
+  watermark?: Watermark
 }
 
 export interface SopFormProState extends RequestResult {
@@ -57,7 +60,18 @@ export interface SopFormProState extends RequestResult {
  * - 若需个性化定制UI，请直接使用SopForm组件
  */
 const SopFormPro = forwardRef<SopFormProState, IProps>(
-  ({ uuid, businessId, sopIds, title }, ref) => {
+  (
+    {
+      uuid,
+      businessId,
+      sopIds,
+      title,
+      watermark = {
+        required: true,
+      },
+    },
+    ref,
+  ) => {
     const client = useApolloClient()
 
     const form = useSopForm()
@@ -138,6 +152,7 @@ const SopFormPro = forwardRef<SopFormProState, IProps>(
     }))
 
     const { loading, data, error, refresh } = useSopRequest(businessId, sopIds)
+    const getWatermark = useWatermark({ watermark })
 
     if (!sopIds?.length) return null
     if (error) return <Empty text={`${title}数据加载异常`} />
@@ -147,6 +162,7 @@ const SopFormPro = forwardRef<SopFormProState, IProps>(
         loading={loading}
         uuid={uuid}
         form={form}
+        watermark={getWatermark}
         data={data as any}
         title={title}
       />

@@ -1,10 +1,10 @@
-import type { UploadItem } from '@fruits-chain/react-native-upload'
 import Upload2 from '@fruits-chain/react-native-upload'
 import { cloneDeep } from 'lodash'
 import React, { useCallback, useEffect } from 'react'
+import { useBackUploadManager, getUploader } from './manager'
 import type { FC, ComponentProps } from 'react'
 
-import { useBackUploadManager, getUploader } from './manager'
+import type { UploadItem } from '@fruits-chain/react-native-upload'
 
 type UploadProps = ComponentProps<typeof Upload2>
 interface IProps extends Omit<UploadProps, 'uploadAction'> {
@@ -46,7 +46,7 @@ const Upload: FC<IProps> = ({
       const uploadItemsMap = uploadItems.reduce((obj, item) => {
         obj[item.filepath] = item
         return obj
-      }, {} as Record<string, UploadItem>)
+      }, {} as unknown as Record<string, UploadItem>)
       const allFilepath = Array.from(
         new Set(
           job.queue
@@ -96,7 +96,7 @@ const Upload: FC<IProps> = ({
     const listMap = list.reduce((obj, item) => {
       obj[item.filepath] = item
       return obj
-    }, {} as Record<string, UploadItem>)
+    }, {} as unknown as Record<string, UploadItem>)
     let shouldUpdate = false
     const newList = [...list]
     jobQueue.forEach(item => {

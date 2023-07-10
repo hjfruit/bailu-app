@@ -1,8 +1,9 @@
+import { fieldDefaultValueMap, fieldKeyMap } from '@fruits-chain/sop'
+import { InputTextRule, SopCheckItemEnum } from './graphql/generated/types'
 import type { UploadItem } from '@fruits-chain/react-native-upload'
 
-import { fieldDefaultValueMap, fieldKeyMap } from '@fruits-chain/sop'
 import type { SopFormValues } from '@fruits-chain/sop'
-import { InputTextRule, ResultReqInput, SopCheckItemEnum } from './graphql/generated/types'
+import type { ResultReqInput } from './graphql/generated/types'
 
 /**
  * 将upload组件的值格式化为中台入参标准格式

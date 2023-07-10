@@ -1,15 +1,15 @@
 import Upload from '@fruits-chain/react-native-upload'
 import { Form, Space } from '@fruits-chain/react-native-xiaoshu'
 import React from 'react'
-import type { FC } from 'react'
 import { Text, View } from 'react-native'
 import EStyleSheet from 'react-native-extended-stylesheet'
 
-import type { SopCheckItemResultPayload } from '../../graphql/generated/types'
 import { SopCheckItemEnum } from '../../graphql/generated/types'
+import { maybeTips } from '../../helpers'
+import type { SopCheckItemResultPayload } from '../../graphql/generated/types'
 
 import type { FieldKey } from '../../helpers'
-import { maybeTips } from '../../helpers'
+import type { FC } from 'react'
 
 interface IProps {
   field: FieldKey
@@ -47,12 +47,16 @@ const ContentPreview: FC<IProps> = ({ name, namePrefix, question, field }) => {
 
         return (
           <Space gap={4} head>
-            {question.type !== SopCheckItemEnum.FileType && <View style={styles.wrap}>
-              <Text style={styles.text}>
-                {maybeTips(result || '未填写', remark)}
-              </Text>
-            </View>}
-            {question.type === SopCheckItemEnum.FileType && !!result && <Upload.Preview list={result} />}
+            {question.type !== SopCheckItemEnum.FileType && (
+              <View style={styles.wrap}>
+                <Text style={styles.text}>
+                  {maybeTips(result || '未填写', remark)}
+                </Text>
+              </View>
+            )}
+            {question.type === SopCheckItemEnum.FileType && !!result && (
+              <Upload.Preview list={result} />
+            )}
             {!!media && <Upload.Preview list={media} />}
           </Space>
         )

@@ -41,8 +41,9 @@ module.exports = {
       },
     ],
     '@typescript-eslint/consistent-type-imports': 1,
+    'react-native/no-inline-styles': 0,
   },
   settings: {
     'import/ignore': ['react-native'],
-  }
+  },
 }

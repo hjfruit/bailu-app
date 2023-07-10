@@ -1,12 +1,12 @@
 import { Form, NumberInput, Space } from '@fruits-chain/react-native-xiaoshu'
 import React from 'react'
-import type { FC } from 'react'
 
 import { fieldKeyMap, maybeRules } from '../helpers'
 
 import Tips from './components/tips'
 import Title from './components/title'
 import FileRemarkFormItem from './file-remark'
+import type { FC } from 'react'
 import type { CommonProps } from './interface'
 
 interface IProps extends CommonProps {}
@@ -19,6 +19,7 @@ const NumberFormItem: FC<IProps> = ({
   question,
   namePrefix,
   name,
+  watermark,
   ...restProps
 }) => {
   return (
@@ -50,6 +51,7 @@ const NumberFormItem: FC<IProps> = ({
             form={form}
             formUuid={formUuid}
             uuid={uuid}
+            watermark={watermark}
             backUpload={backUpload}
             question={question}
             namePrefix={namePrefix}

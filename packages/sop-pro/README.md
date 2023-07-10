@@ -2,6 +2,8 @@
 
 > SOP 业务公共组件, 相比`@fruits-chain/sop`组件, 内部对 SOP 模板、答案、暂存、等功能进行了封装, 并内置了 loading、error 等状态下的 UI
 
+> 默认内置了时间水印, 可以通过 watermark 属性传递用户自定义的水印文案
+
 ## 使用
 
 ```sh
@@ -22,6 +24,12 @@ _请确保项目安装了上述包中`peerDependencies`列出的所有三方包�
 import React from 'react'
 import { Form, useSopRef } from '@fruits-chain/sop-pro'
 
+const watermark = {
+  // 改为true时, 如果获取水印文案失败(包括内部的时间获取), 则不能进行上传
+  required: false,
+  content: () => Promise.resolve(['第一行水印', '第二行水印']),
+}
+
 const Demo = () => {
   const sopFormRef = useSopRef()
   return (
@@ -30,6 +38,7 @@ const Demo = () => {
       title={'每个模板的title'} // 可以为render函数
       uuid={'全局唯一id'} // 推荐由路由+业务id+操作类型组成
       businessId={'业务id'}
+      watermark={watermark} // 非必传, 默认{ required: false, content: () => Promise.resolve([]) }
       sopIds={'SOP ID组成的数组'}
     />
   )
@@ -86,3 +95,7 @@ const Demo = () => {
 **refresh**
 
 > 刷新 SOP 模板及答案的数据
+
+### useWatermark
+
+> 创建一个生成水印的函数, 内置了生成时间水印文案

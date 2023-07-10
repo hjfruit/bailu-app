@@ -19,6 +19,7 @@ const CheckboxFormItem: FC<IProps> = ({
   backUpload,
   question,
   namePrefix,
+  watermark,
   name,
   ...restProps
 }) => {
@@ -68,6 +69,7 @@ const CheckboxFormItem: FC<IProps> = ({
           <FileRemarkFormItem
             form={form}
             formUuid={formUuid}
+            watermark={watermark}
             uuid={uuid}
             backUpload={backUpload}
             question={question}

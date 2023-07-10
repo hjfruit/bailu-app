@@ -61,3 +61,8 @@ mutation cacheAnswer($input: CacheAnswerInput) {
 mutation updateSubmitAnswer($input: UpdateSubmitAnswerInput) {
   updateSubmitAnswer(input: $input)
 }
+
+# 获取服务器时间
+query serverTime($format: Format) {
+  serverTime(format: $format)
+}

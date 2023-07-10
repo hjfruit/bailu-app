@@ -16,13 +16,14 @@ import NumberFormItem from './questions/number'
 import RadioFormItem from './questions/radio'
 import TextFormItem from './questions/text'
 import { data2formValues } from './helpers'
+import type Upload from '@fruits-chain/react-native-upload'
 import type {
   SopCheckItemResultPayload,
   SopDetailResultPayload,
 } from './graphql/generated/types'
-import type { FC, ReactNode } from 'react'
+import type { FC, ReactNode, ComponentProps } from 'react'
 
-interface IProps {
+interface IProps extends Pick<ComponentProps<typeof Upload>, 'watermark'> {
   /** 表单唯一标识（全局唯一） */
   uuid: string
   /**
@@ -68,6 +69,7 @@ const SopForm: FC<IProps> = ({
   form,
   title,
   data,
+  watermark,
   wrapper,
 }) => {
   useEffect(() => {
@@ -131,6 +133,7 @@ const SopForm: FC<IProps> = ({
                       namePrefix: namePrefix,
                       name: [questionField.name, 'sopResult'],
                       backUpload,
+                      watermark,
                     }
                     const control = (() => {
                       switch (questionData.type) {

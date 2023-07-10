@@ -1,7 +1,7 @@
 import React from 'react'
-import type { FC } from 'react'
 import { Text, View } from 'react-native'
 import EStyleSheet from 'react-native-extended-stylesheet'
+import type { FC } from 'react'
 
 interface IProps {
   text: string
