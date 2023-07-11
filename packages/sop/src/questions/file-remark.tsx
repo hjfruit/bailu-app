@@ -2,9 +2,8 @@ import { Form } from '@fruits-chain/react-native-xiaoshu'
 import React from 'react'
 
 import Upload from '@fruits-chain/upload'
-import { SopCheckItemEnum } from '../graphql/generated/types'
 
-import { fieldKeyMap, maybeRules } from '../helpers'
+import { maybeRules } from '../helpers'
 
 import type { UploadItems } from '../interface'
 import type { CommonProps } from './interface'
@@ -23,7 +22,7 @@ const FileRemarkFormItem: FC<IProps> = ({
 }) => {
   return (
     <Form.Item
-      name={[...name, 'fileLink', fieldKeyMap[SopCheckItemEnum.FileType]]}
+      name={[...name, 'fileLink']}
       rules={[
         ...maybeRules(question.remarkRequired, [
           () => ({

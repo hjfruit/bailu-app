@@ -45,9 +45,9 @@ export type FieldKey =
   | 'CHECKBOX_TYPE'
   | ''
 
-const files2uploadList = (files: FileVO[], conversion: boolean) => {
+const _fileList2uploadList = (files: FileVO[], conversion: boolean) => {
   return (
-    files?.map(file =>
+    files?.map?.(file =>
       conversion
         ? {
             key: file?.fileId,
@@ -84,18 +84,16 @@ export const data2formValues = (
           }
           // 文件类型，需要转化为UploadItem[]类型
           if (key === 'FILE_TYPE') {
-            value = files2uploadList(value, file2uploadItem)
+            value = _fileList2uploadList(value, file2uploadItem)
           }
           return {
             ...question,
             sopResult: {
               ...(question.sopResult || {}),
-              fileLink: {
-                [fieldKeyMap[SopCheckItemEnum.FileType]]: files2uploadList(
-                  question.sopResult?.fileLink?.[SopCheckItemEnum.FileType],
-                  file2uploadItem,
-                ),
-              },
+              fileLink: _fileList2uploadList(
+                question.sopResult?.fileLink,
+                file2uploadItem,
+              ),
               checkResult: { [key]: value },
             },
           }

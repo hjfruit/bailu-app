@@ -10,23 +10,22 @@ import type { ResultReqInput } from './graphql/generated/types'
  * @param fileList upload组件的list
  * @returns 标准格式参数
  */
-const _getFileInfo = (fileList: UploadItem[]) => {
-  return {
-    [fieldKeyMap[SopCheckItemEnum.FileType]]:
-      fileList
-        ?.map?.(file => {
-          if (file.status === 'done') {
-            const originInfo = file.origin
-            return {
-              fileId: originInfo?.fileId,
-              fileUrl: originInfo?.fileUrl,
-              filename: originInfo?.filename,
-            }
+const _uploadList2FileList = (fileList: UploadItem[]) => {
+  return (
+    fileList
+      ?.map?.(file => {
+        if (file.status === 'done') {
+          const originInfo = file.origin
+          return {
+            fileId: originInfo?.fileId,
+            fileUrl: originInfo?.fileUrl,
+            filename: originInfo?.filename,
           }
-          return false
-        })
-        ?.filter(Boolean) || [],
-  }
+        }
+        return false
+      })
+      ?.filter(Boolean) || []
+  )
 }
 
 type Format = (values: SopFormValues) => ResultReqInput[]
@@ -52,19 +51,15 @@ export const format: Format = values => {
           value = value?.toString()
         }
 
-        const checkResult =
-          questionType === SopCheckItemEnum.FileType
-            ? _getFileInfo(value)
-            : {
-                [key]: value ?? fieldDefaultValueMap[questionType],
-              }
+        const checkResult = {
+          [key]:
+            questionType === SopCheckItemEnum.FileType
+              ? _uploadList2FileList(value)
+              : value ?? fieldDefaultValueMap[questionType],
+        }
         return {
           sopDetailId: question.sopDetailId,
-          fileLink: _getFileInfo(
-            question.sopResult?.fileLink?.[
-              fieldKeyMap[SopCheckItemEnum.FileType]
-            ],
-          ),
+          fileLink: _uploadList2FileList(question.sopResult?.fileLink),
           remark: question.sopResult?.remark || '',
           checkResult,
         }

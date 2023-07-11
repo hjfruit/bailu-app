@@ -21,7 +21,7 @@ interface IProps {
 const ContentPreview: FC<IProps> = ({ name, namePrefix, question, field }) => {
   const namePath = [...namePrefix, ...name, 'checkResult', field]
   const remarkPath = [...namePrefix, ...name, 'remark']
-  const mediaPath = [...namePrefix, ...name, 'fileLink', 'FILE_TYPE']
+  const mediaPath = [...namePrefix, ...name, 'fileLink']
 
   return (
     <Form.Item shouldUpdate>
