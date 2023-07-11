@@ -1,3 +1,4 @@
+import { formatUploadList } from '@fruits-chain/react-native-upload'
 import { InputTextRule, SopCheckItemEnum } from './graphql/generated/types'
 import type { SopDetailResultPayload } from './graphql/generated/types'
 import type { Rule } from '@fruits-chain/react-native-xiaoshu'
@@ -47,17 +48,8 @@ export type FieldKey =
 
 const _fileList2uploadList = (files: FileVO[], conversion: boolean) => {
   return (
-    files?.map?.(file =>
-      conversion
-        ? {
-            key: file?.fileId,
-            filepath: file?.fileUrl,
-            previewPath: file?.fileUrl,
-            status: 'done',
-            origin: file,
-          }
-        : file,
-    ) || []
+    files?.map?.(file => (conversion ? formatUploadList([file])[0] : file)) ||
+    []
   )
 }
 
