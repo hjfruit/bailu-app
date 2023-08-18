@@ -32,23 +32,22 @@
     "lib"
   ],
   "peerDependencies": {
-    "@fruits-chain/react-native-upload": "^2.2.0",
+    "@fruits-chain/react-native-upload": "^2.3.1",
     "@fruits-chain/react-native-xiaoshu": "^0.3.12",
-    "@react-native-async-storage/async-storage": "^1.18.2",
-    "lodash": "^4.17.21",
     "react": "^18.2.0",
-    "react-native": "^0.71.10",
-    "zustand": "^3.0.0"
+    "react-native": "^0.71.10"
   },
   "devDependencies": {
-    "@fruits-chain/react-native-upload": "^2.2.0",
+    "@fruits-chain/react-native-upload": "^2.3.1",
     "@fruits-chain/react-native-xiaoshu": "^0.3.12",
-    "@react-native-async-storage/async-storage": "^1.18.2",
-    "@types/lodash": "^4.14.195",
-    "@types/react": "^18.2.9",
-    "lodash": "^4.17.21",
     "react": "^18.2.0",
     "react-native": "^0.71.10",
+    "@types/lodash": "^4.14.195",
+    "@types/react": "^18.2.9"
+  },
+  "dependencies": {
+    "@react-native-async-storage/async-storage": "^1.18.2",
+    "lodash": "^4.17.21",
     "zustand": "^3.0.0"
   }
 }

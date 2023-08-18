@@ -1001,6 +1001,15 @@
   resolved "https://registry.yarnpkg.com/@eslint/js/-/js-8.42.0.tgz#484a1d638de2911e6f5a30c12f49c7e4a3270fb6"
   integrity sha512-6SWlXpWU5AvId8Ac7zjzmIOqMOba/JWY8XZ4A7q7Gn1Vlfg/SFFIlrtHXt9nPn4op9ZPAkl91Jao+QQv3r/ukw==
 
+"@fruits-chain/dashu-geo@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@fruits-chain/dashu-geo/-/dashu-geo-2.0.0.tgz#71e83dcbf8fac5ad7041a58da2dd26d634b0e095"
+  integrity sha512-75yDwnBQHakfjsltHmX+OcfshZZv5sXjcBjH9Mi+fJ84Rh5DWLBdtUasQ6prd8T1mReonLQC3i3GvMrpg/7hkg==
+  dependencies:
+    "@turf/distance" "^6.5.0"
+    "@turf/helpers" "^6.5.0"
+    zustand "4.2.0"
+
 "@fruits-chain/design-tokens-bailu@^0.0.7":
   version "0.0.7"
   resolved "https://registry.yarnpkg.com/@fruits-chain/design-tokens-bailu/-/design-tokens-bailu-0.0.7.tgz#08242570a4c2695d9869a1276989cda371ea8504"
@@ -1052,10 +1061,10 @@
     "@babel/runtime" "*"
     lodash "*"
 
-"@fruits-chain/react-native-upload@^2.2.0":
-  version "2.2.0"
-  resolved "https://registry.yarnpkg.com/@fruits-chain/react-native-upload/-/react-native-upload-2.2.0.tgz#88b33de4d0b24e4d2a6c9961beca374d13195a96"
-  integrity sha512-YUDiqfYNtz6/qFHi4HCmPFMYH45sijOE48zR+jjikDBwJcMbsIj4A3An9pJjdWIcMaMxVpPLLZlNuVjpHA8mEA==
+"@fruits-chain/react-native-upload@^2.3.1":
+  version "2.3.1"
+  resolved "https://registry.yarnpkg.com/@fruits-chain/react-native-upload/-/react-native-upload-2.3.1.tgz#230439270c038ff8a3e35e8e4d121eff4f76795c"
+  integrity sha512-lV/MPCMYbCiuti1HMQkWpb5KCdjzPbJhwutv8OM2ePhdFJNKLtr1u1HxjB2x+OldxSig2fmDfT3d83Gr0AZf2Q==
   dependencies:
     "@fruits-chain/utils" "^1.0.1"
     lodash "^4.17.21"
@@ -2798,6 +2807,11 @@
     prompts "^2.4.0"
     semver "^6.3.0"
 
+"@react-native-community/geolocation@^3.0.6":
+  version "3.0.6"
+  resolved "https://registry.yarnpkg.com/@react-native-community/geolocation/-/geolocation-3.0.6.tgz#e2c83c242f917ce5a494cedb161c37abd5f2a72a"
+  integrity sha512-+iidKFgw1HxCJSHVnlywAKu6uerdpDAKTXLRnlsUdhgqtgTiIixb496Z267iPVFmIO1bp4lOU6UiwzmvcyXdbg==
+
 "@react-native/assets@1.0.0":
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/@react-native/assets/-/assets-1.0.0.tgz#c6f9bf63d274bafc8e970628de24986b30a55c8e"
@@ -2927,6 +2941,26 @@
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/@tsconfig/node16/-/node16-1.0.4.tgz#0b92dcc0cc1c81f6f306a381f28e31b1a56536e9"
   integrity sha512-vxhUy4J8lyeyinH7Azl1pdd43GJhZH/tP2weN8TntQblOY+A0XbT8DJk1/oCPuOOyg/Ja757rG0CgHcWC8OfMA==
+
+"@turf/distance@^6.5.0":
+  version "6.5.0"
+  resolved "https://registry.yarnpkg.com/@turf/distance/-/distance-6.5.0.tgz#21f04d5f86e864d54e2abde16f35c15b4f36149a"
+  integrity sha512-xzykSLfoURec5qvQJcfifw/1mJa+5UwByZZ5TZ8iaqjGYN0vomhV9aiSLeYdUGtYRESZ+DYC/OzY+4RclZYgMg==
+  dependencies:
+    "@turf/helpers" "^6.5.0"
+    "@turf/invariant" "^6.5.0"
+
+"@turf/helpers@^6.5.0":
+  version "6.5.0"
+  resolved "https://registry.yarnpkg.com/@turf/helpers/-/helpers-6.5.0.tgz#f79af094bd6b8ce7ed2bd3e089a8493ee6cae82e"
+  integrity sha512-VbI1dV5bLFzohYYdgqwikdMVpe7pJ9X3E+dlr425wa2/sMJqYDhTO++ec38/pcPvPE6oD9WEEeU3Xu3gza+VPw==
+
+"@turf/invariant@^6.5.0":
+  version "6.5.0"
+  resolved "https://registry.yarnpkg.com/@turf/invariant/-/invariant-6.5.0.tgz#970afc988023e39c7ccab2341bd06979ddc7463f"
+  integrity sha512-Wv8PRNCtPD31UVbdJE/KVAWKe7l6US+lJItRR/HOEW3eh+U/JwRCSUl/KZ7bmjM/C+zLNoreM2TU6OoLACs4eg==
+  dependencies:
+    "@turf/helpers" "^6.5.0"
 
 "@types/body-parser@*":
   version "1.19.2"
@@ -11382,7 +11416,7 @@ urlpattern-polyfill@^8.0.0:
   resolved "https://registry.yarnpkg.com/urlpattern-polyfill/-/urlpattern-polyfill-8.0.2.tgz#99f096e35eff8bf4b5a2aa7d58a1523d6ebc7ce5"
   integrity sha512-Qp95D4TPJl1kC9SKigDcqgyM2VDVO4RiJc2d4qe5GrYm+zbIQCWWKAFaJNQ4BhdFeDGwBmAxqJBwWSJDb9T3BQ==
 
-use-sync-external-store@^1.0.0:
+use-sync-external-store@1.2.0, use-sync-external-store@^1.0.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/use-sync-external-store/-/use-sync-external-store-1.2.0.tgz#7dbefd6ef3fe4e767a0cf5d7287aacfb5846928a"
   integrity sha512-eEgnFxGQ1Ife9bzYs6VLi8/4X6CObHMw9Qr9tPY43iKwsPw8xE8+EFsf/2cFZ5S3esXgpWgtSCtLNS41F+sKPA==
@@ -11807,6 +11841,13 @@ zen-observable@0.8.15:
   version "0.8.15"
   resolved "https://registry.yarnpkg.com/zen-observable/-/zen-observable-0.8.15.tgz#96415c512d8e3ffd920afd3889604e30b9eaac15"
   integrity sha512-PQ2PC7R9rslx84ndNBZB/Dkv8V8fZEpk83RLgXtYd0fwUgEjseMn1Dgajh2x6S8QbZAFa9p2qVCEuYZNgve0dQ==
+
+zustand@4.2.0:
+  version "4.2.0"
+  resolved "https://registry.yarnpkg.com/zustand/-/zustand-4.2.0.tgz#f6ef9e63794eda9b296979578538a6df6be3e1b0"
+  integrity sha512-eNwaDoD2FYVnMgtNxiMUhTJO780wonZUzJrPQTLYI0erSIMZF8cniWFW22kGQUECd8rdHRJ/ZJL2XO54c9Ttuw==
+  dependencies:
+    use-sync-external-store "1.2.0"
 
 zustand@^3.0.0:
   version "3.7.2"

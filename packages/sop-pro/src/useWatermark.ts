@@ -1,7 +1,10 @@
 import { useApolloClient } from '@apollo/client'
-import { useCallback } from 'react'
+import { useCallback, useMemo } from 'react'
+import { requestGeoPosition } from '@fruits-chain/dashu-geo'
 import { ServerTimeDocument } from './graphql/operations/__generated__/common.generated'
 import { Format } from './graphql/generated/types'
+import type { SopForm } from '@fruits-chain/sop'
+import type { ComponentProps } from 'react'
 import type {
   ServerTimeQuery,
   ServerTimeQueryVariables,
@@ -12,17 +15,29 @@ export interface Watermark {
    * 水印是否必需, 如果获取失败, 则禁止上传
    * @default true
    */
-  required: boolean
+  required?: boolean
   /** 获取水印 */
   content?: string[] | (() => Promise<string[]>)
+  /** 获取水印（支持富文本/图片详细见@fruits-chain/react-native-upload） */
+  richContent?: ComponentProps<typeof SopForm>['watermark']
 }
 
 interface Options {
   watermark: Watermark
 }
 
-export default ({ watermark }: Options) => {
+export default ({ watermark: _watermark }: Options) => {
+  // 设置默认值
+  const watermark: Watermark = useMemo(() => {
+    return {
+      required: _watermark?.required ?? true,
+      content: _watermark?.content ?? [],
+      richContent: _watermark?.richContent ?? [],
+    }
+  }, [_watermark?.content, _watermark?.required, _watermark?.richContent])
+
   const client = useApolloClient()
+
   const getWatermark = useCallback(() => {
     const serverTime = client
       .query<ServerTimeQuery, ServerTimeQueryVariables>({
@@ -32,19 +47,34 @@ export default ({ watermark }: Options) => {
         },
       })
       .then(res => res.data.serverTime)
+
+    const geo = requestGeoPosition()
+
     const contentPromise = Array.isArray(watermark.content)
       ? Promise.resolve(watermark.content)
-      : watermark.content?.() || Promise.resolve([])
-    return Promise.all([serverTime, contentPromise])
-      .then(([time, customerText]) => {
-        return [...(customerText || []), time]
+      : watermark.content?.() || Promise.resolve([] as string[])
+
+    return Promise.all([serverTime, geo, contentPromise])
+      .then(([time, geoInfo, customerText]) => {
+        return [
+          ...(customerText || []),
+          `经度：${geoInfo.lng}`,
+          `纬度：${geoInfo.lat}`,
+          `地址：${geoInfo.address}`,
+          `时间：${time}`,
+        ]
       })
-      .catch(() => {
+      .catch((err: Error) => {
         if (watermark.required) {
-          return Promise.reject(new Error('水印获取失败'))
+          return Promise.reject(
+            new Error(`水印获取失败：${err.message || '未知错误'}`),
+          )
         }
-        return Promise.resolve([])
+        return Promise.resolve('')
       })
   }, [client, watermark])
-  return getWatermark
+
+  return useMemo(() => {
+    return [getWatermark, ...(watermark.richContent || [])]
+  }, [getWatermark, watermark.richContent])
 }

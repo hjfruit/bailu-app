@@ -33,24 +33,25 @@
     "lib"
   ],
   "peerDependencies": {
-    "@fruits-chain/react-native-upload": "^2.2.0",
-    "@fruits-chain/react-native-xiaoshu": "^0.3.12",
-    "@fruits-chain/upload": "^1.0.0",
-    "rc-field-form": "^1.32.0",
-    "react": "^18.2.0",
-    "react-native": "^0.71.10",
-    "react-native-extended-stylesheet": "^0.12.0"
-  },
-  "devDependencies": {
-    "@fruits-chain/graphql-codegen-preset": "^0.3.1",
-    "@fruits-chain/react-native-upload": "^2.2.0",
+    "@fruits-chain/react-native-upload": "^2.3.1",
     "@fruits-chain/react-native-xiaoshu": "^0.3.12",
     "@fruits-chain/upload": "^1.1.0",
-    "@types/react": "^18.2.9",
-    "graphql": "^16.6.0",
+    "rc-field-form": "^1.32.0",
+    "react": "^18.2.0",
+    "react-native": "^0.71.10"
+  },
+  "devDependencies": {
+    "@fruits-chain/react-native-upload": "^2.3.1",
+    "@fruits-chain/react-native-xiaoshu": "^0.3.12",
+    "@fruits-chain/upload": "^1.1.0",
     "rc-field-form": "^1.32.0",
     "react": "^18.2.0",
     "react-native": "^0.71.10",
+    "@types/react": "^18.2.9",
+    "@fruits-chain/graphql-codegen-preset": "^0.3.1",
+    "graphql": "^16.6.0"
+  },
+  "dependencies": {
     "react-native-extended-stylesheet": "^0.12.0"
   }
 }

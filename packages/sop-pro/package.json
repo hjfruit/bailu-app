@@ -33,26 +33,30 @@
     "lib"
   ],
   "peerDependencies": {
-    "@apollo/client": "3.7.1",
-    "@fruits-chain/react-native-upload": "^2.2.0",
-    "@fruits-chain/react-native-xiaoshu": "^0.3.12",
-    "@fruits-chain/sop": "^1.0.0",
+    "@fruits-chain/react-native-upload": "^2.3.1",
     "@fruits-chain/upload": "^1.0.0",
+    "@fruits-chain/react-native-xiaoshu": "^0.3.12",
+    "@fruits-chain/dashu-geo": "^2.0.1",
+    "@react-native-community/geolocation": "^3.0.6",
+    "@apollo/client": "3.7.1",
     "react": "^18.2.0",
-    "react-native": "^0.71.10",
-    "react-native-extended-stylesheet": "^0.12.0"
+    "react-native": "^0.71.10"
   },
   "devDependencies": {
-    "@apollo/client": "3.7.1",
-    "@fruits-chain/graphql-codegen-preset": "^0.3.1",
-    "@fruits-chain/react-native-upload": "^2.2.0",
+    "@fruits-chain/react-native-upload": "^2.3.1",
+    "@fruits-chain/upload": "^1.0.0",
     "@fruits-chain/react-native-xiaoshu": "^0.3.12",
-    "@fruits-chain/sop": "^1.2.2",
-    "@fruits-chain/upload": "^1.1.0",
-    "@types/react": "^18.2.9",
-    "graphql": "^16.6.0",
+    "@fruits-chain/dashu-geo": "^2.0.1",
+    "@react-native-community/geolocation": "^3.0.6",
+    "@apollo/client": "3.7.1",
     "react": "^18.2.0",
     "react-native": "^0.71.10",
+    "@types/react": "^18.2.9",
+    "@fruits-chain/graphql-codegen-preset": "^0.3.1",
+    "graphql": "^16.6.0"
+  },
+  "dependencies": {
+    "@fruits-chain/sop": "^1.0.0",
     "react-native-extended-stylesheet": "^0.12.0"
   }
 }

@@ -27,7 +27,10 @@ import { Form, useSopRef } from '@fruits-chain/sop-pro'
 const watermark = {
   // 改为true时, 如果获取水印文案失败(包括内部的时间获取), 则不能进行上传
   required: false,
+  // 普通文本
   content: () => Promise.resolve(['第一行水印', '第二行水印']),
+  // 支持富文本/图片, 详细见@fruits-chain/react-native-upload watermark配置
+  richContent: [],
 }
 
 const Demo = () => {
@@ -98,4 +101,4 @@ const Demo = () => {
 
 ### useWatermark
 
-> 创建一个生成水印的函数, 内置了生成时间水印文案
+> 创建一个生成水印的函数, 内置了生成时间水印/地理位置信息文案

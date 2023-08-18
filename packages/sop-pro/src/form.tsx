@@ -60,18 +60,7 @@ export interface SopFormProState extends RequestResult {
  * - 若需个性化定制UI，请直接使用SopForm组件
  */
 const SopFormPro = forwardRef<SopFormProState, IProps>(
-  (
-    {
-      uuid,
-      businessId,
-      sopIds,
-      title,
-      watermark = {
-        required: true,
-      },
-    },
-    ref,
-  ) => {
+  ({ uuid, businessId, sopIds, title, watermark }, ref) => {
     const client = useApolloClient()
 
     const form = useSopForm()
