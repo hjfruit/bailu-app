@@ -2,17 +2,14 @@ import type { ComponentProps } from 'react'
 import type { SopCheckItemResultPayload } from '../graphql/generated/types'
 
 import type { SopFormInstance } from '../form'
-import type Upload from '@fruits-chain/react-native-upload'
+import type Upload from '@fruits-chain/upload'
 
-export interface CommonProps
-  extends Pick<ComponentProps<typeof Upload>, 'watermark'> {
+export interface CommonProps {
   form: SopFormInstance
   question: SopCheckItemResultPayload
   namePrefix: (string | number)[]
   name: (string | number)[]
-  formUuid: string
-  uuid: string
-  backUpload: boolean
+  uploadProps: ComponentProps<typeof Upload>
 }
 
 export interface PreviewCommonProps {

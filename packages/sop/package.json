@@ -33,16 +33,16 @@
     "lib"
   ],
   "peerDependencies": {
-    "@fruits-chain/react-native-upload": "^2.3.1",
+    "@fruits-chain/react-native-upload": "^2.4.0",
     "@fruits-chain/react-native-xiaoshu": "^0.3.12",
-    "@fruits-chain/upload": "^1.1.0",
+    "@fruits-chain/upload": "^1.3.0",
     "rc-field-form": "^1.32.0",
     "react": "^18.2.0",
     "react-native": "^0.71.10"
   },
   "devDependencies": {
     "@fruits-chain/graphql-codegen-preset": "^0.3.1",
-    "@fruits-chain/react-native-upload": "^2.3.1",
+    "@fruits-chain/react-native-upload": "^2.4.0",
     "@fruits-chain/react-native-xiaoshu": "^0.3.12",
     "@fruits-chain/upload": "^1.2.0",
     "@types/react": "^18.2.9",

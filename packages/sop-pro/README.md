@@ -42,6 +42,11 @@ const Demo = () => {
       uuid={'全局唯一id'} // 推荐由路由+业务id+操作类型组成
       businessId={'业务id'}
       watermark={watermark} // 非必传, 默认{ required: false, content: () => Promise.resolve([]) }
+      uploadProps={
+        {
+          // upload props, 此处的watermark会覆盖前面的watermark
+        }
+      }
       sopIds={'SOP ID组成的数组'}
     />
   )

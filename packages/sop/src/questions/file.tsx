@@ -13,15 +13,7 @@ import type { UploadItems } from '@/interface'
 
 interface IProps extends CommonProps {}
 
-const FileFormItem: FC<IProps> = ({
-  form,
-  formUuid,
-  uuid,
-  backUpload,
-  question,
-  watermark,
-  name,
-}) => {
+const FileFormItem: FC<IProps> = ({ form, question, name, uploadProps }) => {
   return (
     <Space gap={8} head={16} tail={12}>
       <Title text={question.name} required={question.required} />
@@ -53,9 +45,6 @@ const FileFormItem: FC<IProps> = ({
         ]}
         valuePropName="list">
         <BackUpload
-          groupUuid={formUuid}
-          uuid={uuid}
-          watermark={watermark}
           cropPickerMediaType="any"
           pickerType={[
             'cropPicker',
@@ -63,9 +52,9 @@ const FileFormItem: FC<IProps> = ({
             'cropCameraVideo',
             'visionCamera',
           ]}
-          backUpload={backUpload}
           maxCount={10}
           tipText="图片/视频"
+          {...uploadProps}
         />
       </Form.Item>
     </Space>

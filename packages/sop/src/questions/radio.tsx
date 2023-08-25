@@ -15,13 +15,10 @@ interface IProps extends CommonProps {}
 
 const RadioFormItem: FC<IProps> = ({
   form,
-  formUuid,
-  uuid,
-  backUpload,
   question,
   namePrefix,
   name,
-  watermark,
+  uploadProps,
   ...restProps
 }) => {
   const options =
@@ -92,13 +89,10 @@ const RadioFormItem: FC<IProps> = ({
               {question.isRemark && (
                 <FileRemarkFormItem
                   form={form}
-                  watermark={watermark}
-                  formUuid={formUuid}
-                  uuid={uuid}
-                  backUpload={backUpload}
                   question={question}
                   namePrefix={namePrefix}
                   name={name}
+                  uploadProps={uploadProps}
                 />
               )}
             </Space>

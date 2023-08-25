@@ -14,12 +14,9 @@ interface IProps extends CommonProps {}
 
 const CheckboxFormItem: FC<IProps> = ({
   form,
-  formUuid,
-  uuid,
-  backUpload,
   question,
   namePrefix,
-  watermark,
+  uploadProps,
   name,
   ...restProps
 }) => {
@@ -68,13 +65,10 @@ const CheckboxFormItem: FC<IProps> = ({
         {question.isRemark && (
           <FileRemarkFormItem
             form={form}
-            formUuid={formUuid}
-            watermark={watermark}
-            uuid={uuid}
-            backUpload={backUpload}
             question={question}
             namePrefix={namePrefix}
             name={name}
+            uploadProps={uploadProps}
           />
         )}
       </Space>

@@ -16,6 +16,7 @@ import NumberFormItem from './questions/number'
 import RadioFormItem from './questions/radio'
 import TextFormItem from './questions/text'
 import { data2formValues } from './helpers'
+import type { CommonProps } from './questions/interface'
 import type Upload from '@fruits-chain/react-native-upload'
 import type {
   SopCheckItemResultPayload,
@@ -23,7 +24,9 @@ import type {
 } from './graphql/generated/types'
 import type { FC, ReactNode, ComponentProps } from 'react'
 
-interface IProps extends Pick<ComponentProps<typeof Upload>, 'watermark'> {
+type UploadProps = ComponentProps<typeof Upload>
+
+interface IProps {
   /** 表单唯一标识（全局唯一） */
   uuid: string
   /**
@@ -44,6 +47,8 @@ interface IProps extends Pick<ComponentProps<typeof Upload>, 'watermark'> {
     templateData: SopDetailResultPayload,
     templateJSX: ReactNode,
   ) => ReactNode
+  /**  */
+  uploadProps?: Partial<UploadProps>
 }
 
 export type SopFormInstance = ReturnType<typeof useSopForm>
@@ -69,8 +74,8 @@ const SopForm: FC<IProps> = ({
   form,
   title,
   data,
-  watermark,
   wrapper,
+  uploadProps = {},
 }) => {
   useEffect(() => {
     form.setFieldsValue({
@@ -125,15 +130,17 @@ const SopForm: FC<IProps> = ({
                     ]) as SopCheckItemResultPayload
                     const isNotLastAnswer = index !== questionFields.length - 1
 
-                    const commonProps = {
+                    const commonProps: CommonProps = {
                       form,
-                      formUuid: uuid,
-                      uuid: `${uuid}_${questionData.sopDetailId}`,
                       question: questionData,
                       namePrefix: namePrefix,
                       name: [questionField.name, 'sopResult'],
-                      backUpload,
-                      watermark,
+                      uploadProps: {
+                        groupUuid: uuid,
+                        uuid: `${uuid}_${questionData.sopDetailId}`,
+                        backUpload,
+                        ...uploadProps,
+                      },
                     }
                     const control = (() => {
                       switch (questionData.type) {

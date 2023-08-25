@@ -13,12 +13,9 @@ interface IProps extends CommonProps {}
 
 const FileRemarkFormItem: FC<IProps> = ({
   form,
-  formUuid,
-  uuid,
-  backUpload,
   question,
   name,
-  watermark,
+  uploadProps,
 }) => {
   return (
     <Form.Item
@@ -46,9 +43,6 @@ const FileRemarkFormItem: FC<IProps> = ({
       ]}
       valuePropName="list">
       <Upload
-        groupUuid={formUuid}
-        uuid={uuid}
-        watermark={watermark}
         cropPickerMediaType="any"
         pickerType={[
           'cropPicker',
@@ -56,9 +50,9 @@ const FileRemarkFormItem: FC<IProps> = ({
           'cropCameraVideo',
           'visionCamera',
         ]}
-        backUpload={backUpload}
         maxCount={10}
         tipText="图片/视频"
+        {...uploadProps}
       />
     </Form.Item>
   )

@@ -4,7 +4,10 @@ import React, { useImperativeHandle, forwardRef } from 'react'
 import { SopPreview } from '@fruits-chain/sop'
 
 import useSopRequest from './useSopRequest'
+import type { ComponentProps } from 'react'
 import type { RequestResult } from './useSopRequest'
+
+type SopPreviewProps = ComponentProps<typeof SopPreview>
 
 interface IProps {
   businessId: string
@@ -32,7 +35,13 @@ const SopPreviewPro = forwardRef<SopPreviewProState, IProps>(
     if (!sopIds?.length) return null
     if (error) return <Empty text={`${title}数据加载异常`} />
 
-    return <SopPreview loading={loading} data={data as any} title={title} />
+    return (
+      <SopPreview
+        loading={loading}
+        data={data as unknown as SopPreviewProps['data']}
+        title={title}
+      />
+    )
   },
 )
 

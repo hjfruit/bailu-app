@@ -14,13 +14,10 @@ interface IProps extends CommonProps {}
 
 const DateFormItem: FC<IProps> = ({
   form,
-  formUuid,
-  uuid,
-  backUpload,
   question,
   namePrefix,
   name,
-  watermark,
+  uploadProps,
   ...restProps
 }) => {
   const namePath = [...name, 'checkResult', fieldKeyMap[question.type]]
@@ -77,13 +74,10 @@ const DateFormItem: FC<IProps> = ({
           {question.isRemark && (
             <FileRemarkFormItem
               form={form}
-              watermark={watermark}
-              formUuid={formUuid}
-              uuid={uuid}
-              backUpload={backUpload}
               question={question}
               namePrefix={namePrefix}
               name={name}
+              uploadProps={uploadProps}
             />
           )}
         </Space>

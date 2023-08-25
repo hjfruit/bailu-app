@@ -31,6 +31,11 @@ const Demo = () => {
       form={form}
       data={[]}
       title={'title'}
+      uploadProps={
+        {
+          // upload props
+        }
+      }
     />
   )
 }

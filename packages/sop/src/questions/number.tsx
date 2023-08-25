@@ -13,13 +13,10 @@ interface IProps extends CommonProps {}
 
 const NumberFormItem: FC<IProps> = ({
   form,
-  formUuid,
-  uuid,
-  backUpload,
   question,
   namePrefix,
   name,
-  watermark,
+  uploadProps,
   ...restProps
 }) => {
   return (
@@ -49,13 +46,10 @@ const NumberFormItem: FC<IProps> = ({
         {question.isRemark && (
           <FileRemarkFormItem
             form={form}
-            formUuid={formUuid}
-            uuid={uuid}
-            watermark={watermark}
-            backUpload={backUpload}
             question={question}
             namePrefix={namePrefix}
             name={name}
+            uploadProps={uploadProps}
           />
         )}
       </Space>

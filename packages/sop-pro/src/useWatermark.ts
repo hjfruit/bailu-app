@@ -19,7 +19,7 @@ export interface Watermark {
   /** 获取水印 */
   content?: string[] | (() => Promise<string[]>)
   /** 获取水印（支持富文本/图片详细见@fruits-chain/react-native-upload） */
-  richContent?: ComponentProps<typeof SopForm>['watermark']
+  richContent?: ComponentProps<typeof SopForm>['uploadProps']['watermark']
 }
 
 interface Options {

@@ -11,6 +11,7 @@ import {
 import { format } from './helpers'
 import useSopRequest from './useSopRequest'
 import useWatermark from './useWatermark'
+import type { ComponentProps } from 'react'
 import type { Watermark } from './useWatermark'
 import type {
   CacheAnswerMutation,
@@ -22,12 +23,15 @@ import type { SopFormInstance } from '@fruits-chain/sop'
 
 import type { RequestResult } from './useSopRequest'
 
+type SopFormProps = ComponentProps<typeof SopForm>
+
 interface IProps {
   uuid: string
   businessId: string
   sopIds: string[]
   title: string
   watermark?: Watermark
+  uploadProps?: SopFormProps['uploadProps']
 }
 
 export interface SopFormProState extends RequestResult {
@@ -60,7 +64,7 @@ export interface SopFormProState extends RequestResult {
  * - 若需个性化定制UI，请直接使用SopForm组件
  */
 const SopFormPro = forwardRef<SopFormProState, IProps>(
-  ({ uuid, businessId, sopIds, title, watermark }, ref) => {
+  ({ uuid, businessId, sopIds, title, watermark, uploadProps = {} }, ref) => {
     const client = useApolloClient()
 
     const form = useSopForm()
@@ -151,8 +155,15 @@ const SopFormPro = forwardRef<SopFormProState, IProps>(
         loading={loading}
         uuid={uuid}
         form={form}
-        watermark={getWatermark}
-        data={data as any}
+        data={data as unknown as SopFormProps['data']}
+        uploadProps={{
+          watermark: getWatermark,
+          shouldPrintWatermark(_, pickerType) {
+            // 默认选照片不打水印
+            return pickerType === 'cropPicker'
+          },
+          ...uploadProps,
+        }}
         title={title}
       />
     )
