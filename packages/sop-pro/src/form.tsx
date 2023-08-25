@@ -160,7 +160,7 @@ const SopFormPro = forwardRef<SopFormProState, IProps>(
           watermark: getWatermark,
           shouldPrintWatermark(_, pickerType) {
             // 默认选照片不打水印
-            return pickerType === 'cropPicker'
+            return pickerType !== 'cropPicker'
           },
           ...uploadProps,
         }}
