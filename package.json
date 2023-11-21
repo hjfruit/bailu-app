@@ -46,5 +46,5 @@
       "path": "git-cz"
     }
   },
-  "dependencies": {}
+  "name": "bailu-app"
 }
