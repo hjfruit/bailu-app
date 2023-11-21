@@ -1,141 +1,92 @@
-import { gql } from '@apollo/client'
-import * as Apollo from '@apollo/client'
-import type * as SchemaTypes from '../../generated/types'
-const defaultOptions = {} as const
-export type GetSopOrResultQueryVariables = SchemaTypes.Exact<{
-  input?: SchemaTypes.InputMaybe<SchemaTypes.GetSopOrResultInput>
-}>
+import type * as SchemaTypes from '../../generated/types';
 
-export type GetSopOrResultQuery = {
-  getSopOrResult?: {
-    __typename?: 'SopDetailResultPayload'
-    enabled?: SchemaTypes.EnabledEnum
-    enabledName?: string
-    sopId?: string
-    templateDesc?: string
-    templateName?: string
-    universal?: boolean
-    category?: {
-      __typename?: 'CommodityCategoryEntity'
-      categoryName?: string
-      id?: number
-    }
-    sopCheckItems?: Array<{
-      __typename?: 'SopCheckItemResultPayload'
-      enabled?: SchemaTypes.EnabledEnum
-      enabledName?: string
-      inputTextRule?: SchemaTypes.InputTextRule
-      isRemark?: boolean
-      name?: string
-      nameLocale?: any
-      remarkRequired?: boolean
-      remarks?: string
-      required?: boolean
-      snapshotId?: string
-      sopDetailId?: string
-      sopId?: string
-      sort?: number
-      type?: SchemaTypes.SopCheckItemEnum
-      typeName?: string
-      options?: Array<{
-        __typename?: 'SopOptionPayload'
-        isRemark?: boolean
-        name?: string
-        nameLocale?: any
-        remarkRequired?: boolean
-        remarks?: string
-        sort?: number
-        value?: string
-      }>
-      sopResult?: {
-        __typename?: 'SopOrResultPayload'
-        businessId?: string
-        cacheEnabled?: boolean
-        checkResult?: any
-        checkResultType?: SchemaTypes.SopCheckItemEnum
-        fileLink?: any
-        remark?: string
-        sopDetailId?: string
-        sopId?: string
-        sopResultId?: string
-        userId?: number
-      }
-    }>
-  }
-}
+import { gql } from '@apollo/client';
+import * as Apollo from '@apollo/client';
+const defaultOptions = {} as const;
+export type GetSopOrResultQueryVariables = SchemaTypes.Exact<{
+  input?: SchemaTypes.InputMaybe<SchemaTypes.GetSopOrResultInput>;
+}>;
+
+
+export type GetSopOrResultQuery = { getSopOrResult?: { __typename?: 'SopDetailResultPayload', enabled?: SchemaTypes.EnabledEnum, enabledName?: string, sopId?: string, templateDesc?: string, templateName?: string, universal?: boolean, category?: { __typename?: 'CommodityCategoryEntity', categoryName?: string, id?: number }, sopCheckItems?: Array<{ __typename?: 'SopCheckItemResultPayload', enabled?: SchemaTypes.EnabledEnum, enabledName?: string, inputTextRule?: SchemaTypes.InputTextRule, isRemark?: boolean, name?: string, nameLocale?: any, remarkRequired?: boolean, remarks?: string, required?: boolean, snapshotId?: string, sopDetailId?: string, sopId?: string, sort?: number, type?: SchemaTypes.SopCheckItemEnum, typeName?: string, options?: Array<{ __typename?: 'SopOptionPayload', isRemark?: boolean, name?: string, nameLocale?: any, remarkRequired?: boolean, remarks?: string, sort?: number, value?: string }>, sopResult?: { __typename?: 'SopOrResultPayload', businessId?: string, cacheEnabled?: boolean, checkResult?: any, checkResultType?: SchemaTypes.SopCheckItemEnum, createTime?: number, fileLink?: any, remark?: string, sopDetailId?: string, sopId?: string, sopResultId?: string, userId?: number } }> } };
 
 export type CacheAnswerMutationVariables = SchemaTypes.Exact<{
-  input?: SchemaTypes.InputMaybe<SchemaTypes.CacheAnswerInput>
-}>
+  input?: SchemaTypes.InputMaybe<SchemaTypes.CacheAnswerInput>;
+}>;
 
-export type CacheAnswerMutation = { cacheAnswer?: boolean }
+
+export type CacheAnswerMutation = { cacheAnswer?: boolean };
 
 export type UpdateSubmitAnswerMutationVariables = SchemaTypes.Exact<{
-  input?: SchemaTypes.InputMaybe<SchemaTypes.UpdateSubmitAnswerInput>
-}>
+  input?: SchemaTypes.InputMaybe<SchemaTypes.UpdateSubmitAnswerInput>;
+}>;
 
-export type UpdateSubmitAnswerMutation = { updateSubmitAnswer?: boolean }
+
+export type UpdateSubmitAnswerMutation = { updateSubmitAnswer?: boolean };
 
 export type ServerTimeQueryVariables = SchemaTypes.Exact<{
-  format?: SchemaTypes.InputMaybe<SchemaTypes.Format>
-}>
+  format?: SchemaTypes.InputMaybe<SchemaTypes.Format>;
+}>;
 
-export type ServerTimeQuery = { serverTime?: string }
+
+export type ServerTimeQuery = { serverTime?: string };
+
 
 export const GetSopOrResultDocument = gql`
-  query getSopOrResult($input: GetSopOrResultInput) {
-    getSopOrResult(input: $input) {
-      category {
-        categoryName
-        id
-      }
+    query getSopOrResult($input: GetSopOrResultInput) {
+  getSopOrResult(input: $input) {
+    category {
+      categoryName
+      id
+    }
+    enabled
+    enabledName
+    sopCheckItems {
       enabled
       enabledName
-      sopCheckItems {
-        enabled
-        enabledName
-        inputTextRule
+      inputTextRule
+      isRemark
+      name
+      nameLocale
+      options {
         isRemark
         name
         nameLocale
-        options {
-          isRemark
-          name
-          nameLocale
-          remarkRequired
-          remarks
-          sort
-          value
-        }
         remarkRequired
         remarks
-        required
-        snapshotId
+        sort
+        value
+      }
+      remarkRequired
+      remarks
+      required
+      snapshotId
+      sopDetailId
+      sopId
+      sopResult {
+        businessId
+        cacheEnabled
+        checkResult
+        checkResultType
+        createTime
+        fileLink
+        remark
         sopDetailId
         sopId
-        sopResult {
-          businessId
-          cacheEnabled
-          checkResult
-          checkResultType
-          fileLink
-          remark
-          sopDetailId
-          sopId
-          sopResultId
-          userId
-        }
-        sort
-        type
-        typeName
+        sopResultId
+        userId
       }
-      sopId
-      templateDesc
-      templateName
-      universal
+      sort
+      type
+      typeName
     }
+    sopId
+    templateDesc
+    templateName
+    universal
   }
-`
+}
+    `;
 
 /**
  * __useGetSopOrResultQuery__
@@ -153,49 +104,23 @@ export const GetSopOrResultDocument = gql`
  *   },
  * });
  */
-export function useGetSopOrResultQuery(
-  baseOptions?: Apollo.QueryHookOptions<
-    GetSopOrResultQuery,
-    GetSopOrResultQueryVariables
-  >,
-) {
-  const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useQuery<GetSopOrResultQuery, GetSopOrResultQueryVariables>(
-    GetSopOrResultDocument,
-    options,
-  )
-}
-export function useGetSopOrResultLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<
-    GetSopOrResultQuery,
-    GetSopOrResultQueryVariables
-  >,
-) {
-  const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useLazyQuery<GetSopOrResultQuery, GetSopOrResultQueryVariables>(
-    GetSopOrResultDocument,
-    options,
-  )
-}
-export type GetSopOrResultQueryHookResult = ReturnType<
-  typeof useGetSopOrResultQuery
->
-export type GetSopOrResultLazyQueryHookResult = ReturnType<
-  typeof useGetSopOrResultLazyQuery
->
-export type GetSopOrResultQueryResult = Apollo.QueryResult<
-  GetSopOrResultQuery,
-  GetSopOrResultQueryVariables
->
+export function useGetSopOrResultQuery(baseOptions?: Apollo.QueryHookOptions<GetSopOrResultQuery, GetSopOrResultQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetSopOrResultQuery, GetSopOrResultQueryVariables>(GetSopOrResultDocument, options);
+      }
+export function useGetSopOrResultLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetSopOrResultQuery, GetSopOrResultQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetSopOrResultQuery, GetSopOrResultQueryVariables>(GetSopOrResultDocument, options);
+        }
+export type GetSopOrResultQueryHookResult = ReturnType<typeof useGetSopOrResultQuery>;
+export type GetSopOrResultLazyQueryHookResult = ReturnType<typeof useGetSopOrResultLazyQuery>;
+export type GetSopOrResultQueryResult = Apollo.QueryResult<GetSopOrResultQuery, GetSopOrResultQueryVariables>;
 export const CacheAnswerDocument = gql`
-  mutation cacheAnswer($input: CacheAnswerInput) {
-    cacheAnswer(input: $input)
-  }
-`
-export type CacheAnswerMutationFn = Apollo.MutationFunction<
-  CacheAnswerMutation,
-  CacheAnswerMutationVariables
->
+    mutation cacheAnswer($input: CacheAnswerInput) {
+  cacheAnswer(input: $input)
+}
+    `;
+export type CacheAnswerMutationFn = Apollo.MutationFunction<CacheAnswerMutation, CacheAnswerMutationVariables>;
 
 /**
  * __useCacheAnswerMutation__
@@ -214,36 +139,19 @@ export type CacheAnswerMutationFn = Apollo.MutationFunction<
  *   },
  * });
  */
-export function useCacheAnswerMutation(
-  baseOptions?: Apollo.MutationHookOptions<
-    CacheAnswerMutation,
-    CacheAnswerMutationVariables
-  >,
-) {
-  const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useMutation<CacheAnswerMutation, CacheAnswerMutationVariables>(
-    CacheAnswerDocument,
-    options,
-  )
-}
-export type CacheAnswerMutationHookResult = ReturnType<
-  typeof useCacheAnswerMutation
->
-export type CacheAnswerMutationResult =
-  Apollo.MutationResult<CacheAnswerMutation>
-export type CacheAnswerMutationOptions = Apollo.BaseMutationOptions<
-  CacheAnswerMutation,
-  CacheAnswerMutationVariables
->
+export function useCacheAnswerMutation(baseOptions?: Apollo.MutationHookOptions<CacheAnswerMutation, CacheAnswerMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<CacheAnswerMutation, CacheAnswerMutationVariables>(CacheAnswerDocument, options);
+      }
+export type CacheAnswerMutationHookResult = ReturnType<typeof useCacheAnswerMutation>;
+export type CacheAnswerMutationResult = Apollo.MutationResult<CacheAnswerMutation>;
+export type CacheAnswerMutationOptions = Apollo.BaseMutationOptions<CacheAnswerMutation, CacheAnswerMutationVariables>;
 export const UpdateSubmitAnswerDocument = gql`
-  mutation updateSubmitAnswer($input: UpdateSubmitAnswerInput) {
-    updateSubmitAnswer(input: $input)
-  }
-`
-export type UpdateSubmitAnswerMutationFn = Apollo.MutationFunction<
-  UpdateSubmitAnswerMutation,
-  UpdateSubmitAnswerMutationVariables
->
+    mutation updateSubmitAnswer($input: UpdateSubmitAnswerInput) {
+  updateSubmitAnswer(input: $input)
+}
+    `;
+export type UpdateSubmitAnswerMutationFn = Apollo.MutationFunction<UpdateSubmitAnswerMutation, UpdateSubmitAnswerMutationVariables>;
 
 /**
  * __useUpdateSubmitAnswerMutation__
@@ -262,32 +170,18 @@ export type UpdateSubmitAnswerMutationFn = Apollo.MutationFunction<
  *   },
  * });
  */
-export function useUpdateSubmitAnswerMutation(
-  baseOptions?: Apollo.MutationHookOptions<
-    UpdateSubmitAnswerMutation,
-    UpdateSubmitAnswerMutationVariables
-  >,
-) {
-  const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useMutation<
-    UpdateSubmitAnswerMutation,
-    UpdateSubmitAnswerMutationVariables
-  >(UpdateSubmitAnswerDocument, options)
-}
-export type UpdateSubmitAnswerMutationHookResult = ReturnType<
-  typeof useUpdateSubmitAnswerMutation
->
-export type UpdateSubmitAnswerMutationResult =
-  Apollo.MutationResult<UpdateSubmitAnswerMutation>
-export type UpdateSubmitAnswerMutationOptions = Apollo.BaseMutationOptions<
-  UpdateSubmitAnswerMutation,
-  UpdateSubmitAnswerMutationVariables
->
+export function useUpdateSubmitAnswerMutation(baseOptions?: Apollo.MutationHookOptions<UpdateSubmitAnswerMutation, UpdateSubmitAnswerMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<UpdateSubmitAnswerMutation, UpdateSubmitAnswerMutationVariables>(UpdateSubmitAnswerDocument, options);
+      }
+export type UpdateSubmitAnswerMutationHookResult = ReturnType<typeof useUpdateSubmitAnswerMutation>;
+export type UpdateSubmitAnswerMutationResult = Apollo.MutationResult<UpdateSubmitAnswerMutation>;
+export type UpdateSubmitAnswerMutationOptions = Apollo.BaseMutationOptions<UpdateSubmitAnswerMutation, UpdateSubmitAnswerMutationVariables>;
 export const ServerTimeDocument = gql`
-  query serverTime($format: Format) {
-    serverTime(format: $format)
-  }
-`
+    query serverTime($format: Format) {
+  serverTime(format: $format)
+}
+    `;
 
 /**
  * __useServerTimeQuery__
@@ -305,35 +199,14 @@ export const ServerTimeDocument = gql`
  *   },
  * });
  */
-export function useServerTimeQuery(
-  baseOptions?: Apollo.QueryHookOptions<
-    ServerTimeQuery,
-    ServerTimeQueryVariables
-  >,
-) {
-  const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useQuery<ServerTimeQuery, ServerTimeQueryVariables>(
-    ServerTimeDocument,
-    options,
-  )
-}
-export function useServerTimeLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<
-    ServerTimeQuery,
-    ServerTimeQueryVariables
-  >,
-) {
-  const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useLazyQuery<ServerTimeQuery, ServerTimeQueryVariables>(
-    ServerTimeDocument,
-    options,
-  )
-}
-export type ServerTimeQueryHookResult = ReturnType<typeof useServerTimeQuery>
-export type ServerTimeLazyQueryHookResult = ReturnType<
-  typeof useServerTimeLazyQuery
->
-export type ServerTimeQueryResult = Apollo.QueryResult<
-  ServerTimeQuery,
-  ServerTimeQueryVariables
->
+export function useServerTimeQuery(baseOptions?: Apollo.QueryHookOptions<ServerTimeQuery, ServerTimeQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<ServerTimeQuery, ServerTimeQueryVariables>(ServerTimeDocument, options);
+      }
+export function useServerTimeLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ServerTimeQuery, ServerTimeQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<ServerTimeQuery, ServerTimeQueryVariables>(ServerTimeDocument, options);
+        }
+export type ServerTimeQueryHookResult = ReturnType<typeof useServerTimeQuery>;
+export type ServerTimeLazyQueryHookResult = ReturnType<typeof useServerTimeLazyQuery>;
+export type ServerTimeQueryResult = Apollo.QueryResult<ServerTimeQuery, ServerTimeQueryVariables>;

@@ -28,8 +28,10 @@
   "main": "lib/commonjs/index.js",
   "module": "lib/module/index.js",
   "types": "lib/index.d.ts",
+  "react-native": "src/index.ts",
   "files": [
-    "lib"
+    "lib",
+    "src"
   ],
   "peerDependencies": {
     "@fruits-chain/react-native-upload": "^2.4.0",

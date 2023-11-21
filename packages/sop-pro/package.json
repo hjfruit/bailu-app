@@ -29,8 +29,10 @@
   "main": "lib/commonjs/index.js",
   "module": "lib/module/index.js",
   "types": "lib/index.d.ts",
+  "react-native": "src/index.ts",
   "files": [
-    "lib"
+    "lib",
+    "src"
   ],
   "peerDependencies": {
     "@apollo/client": "3.7.1",

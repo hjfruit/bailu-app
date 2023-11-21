@@ -1,4 +1,5 @@
 import { formatUploadList } from '@fruits-chain/react-native-upload'
+import dayjs from 'dayjs'
 import { InputTextRule, SopCheckItemEnum } from './graphql/generated/types'
 import type { SopDetailResultPayload } from './graphql/generated/types'
 import type { Rule } from '@fruits-chain/react-native-xiaoshu'
@@ -92,4 +93,20 @@ export const data2formValues = (
         }) || [],
     })) || []
   )
+}
+
+/**
+ * 时间戳转时间字符串
+ * @param timestamp 要转换的时间戳
+ * @param format 转换格式
+ * @returns 转换后的时间字符串
+ */
+export const timestamp2time = (
+  timestamp: number,
+  format = 'YYYY-MM-DD HH:mm',
+) => {
+  if (timestamp) {
+    return dayjs(timestamp).format(format)
+  }
+  return ''
 }

@@ -5,7 +5,7 @@ import { Text, View } from 'react-native'
 import EStyleSheet from 'react-native-extended-stylesheet'
 
 import { SopCheckItemEnum } from '../../graphql/generated/types'
-import { maybeTips } from '../../helpers'
+import { maybeTips, timestamp2time } from '../../helpers'
 import type { SopCheckItemResultPayload } from '../../graphql/generated/types'
 
 import type { FieldKey } from '../../helpers'
@@ -37,13 +37,15 @@ const ContentPreview: FC<IProps> = ({ name, namePrefix, question, field }) => {
         }
 
         if (question.type === SopCheckItemEnum.CheckboxType) {
-          result = (result as number[])
+          result = (result as string[])
             ?.map(val => {
               const option = question.options.find(opt => opt.value === val)
               return maybeTips(option.name, option.remarks)
             })
             .join('、')
         }
+
+        const updateTime = question?.sopResult?.createTime
 
         return (
           <Space gap={4} head>
@@ -58,6 +60,11 @@ const ContentPreview: FC<IProps> = ({ name, namePrefix, question, field }) => {
               <Upload.Preview list={result} />
             )}
             {!!media && <Upload.Preview list={media} />}
+            {!!updateTime && (
+              <Text style={{ color: '#FE7A33', fontSize: 14, lineHeight: 22 }}>
+                {`答案更新时间${timestamp2time(updateTime)}`}
+              </Text>
+            )}
           </Space>
         )
       }}

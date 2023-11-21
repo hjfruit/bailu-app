@@ -34,6 +34,7 @@ query getSopOrResult($input: GetSopOrResultInput) {
         cacheEnabled
         checkResult
         checkResultType
+        createTime
         fileLink
         remark
         sopDetailId
