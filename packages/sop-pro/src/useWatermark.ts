@@ -56,13 +56,17 @@ export default ({ watermark: _watermark }: Options) => {
 
     return Promise.all([serverTime, geo, contentPromise])
       .then(([time, geoInfo, customerText]) => {
+        // 地址限制处理约120个字符，超出的文字可能会被截断
         return [
           ...(customerText || []),
           `经度：${geoInfo.lng}`,
           `纬度：${geoInfo.lat}`,
-          `地址：${geoInfo.address}`,
+          `地址：${geoInfo.address?.slice(0, 27)}`,
+          `${geoInfo.address?.slice(27, 57) ?? ''}`,
+          `${geoInfo.address?.slice(57, 87) ?? ''}`,
+          `${geoInfo.address?.slice(87) ?? ''}`,
           `时间：${time}`,
-        ]
+        ].filter(Boolean)
       })
       .catch((err: Error) => {
         if (watermark.required) {
