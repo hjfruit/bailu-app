@@ -79,6 +79,12 @@ export const data2formValues = (
           if (key === 'FILE_TYPE') {
             value = _fileList2uploadList(value, file2uploadItem)
           }
+          // 单选类型，中台会返回“0”表示空，因此需要格式化未null
+          if (key === 'RADIO_TYPE') {
+            if (value === '0') {
+              value = null
+            }
+          }
           return {
             ...question,
             sopResult: {
