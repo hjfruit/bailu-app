@@ -82,7 +82,7 @@ export const data2formValues = (
           // 单选类型，中台会返回“0”表示空，因此需要格式化未null
           if (key === 'RADIO_TYPE') {
             if (value === '0') {
-              value = null
+              value = undefined
             }
           }
           return {
