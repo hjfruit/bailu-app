@@ -61,8 +61,8 @@ const ContentPreview: FC<IProps> = ({ name, namePrefix, question, field }) => {
             )}
             {!!media && <Upload.Preview list={media} />}
             {!!updateTime && (
-              <Text style={{ color: '#FE7A33', fontSize: 14, lineHeight: 22 }}>
-                {`答案更新时间${timestamp2time(updateTime)}`}
+              <Text style={{ color: '#B9BEC5', fontSize: 14, lineHeight: 22 }}>
+                {`更新时间${timestamp2time(updateTime)}`}
               </Text>
             )}
           </Space>
