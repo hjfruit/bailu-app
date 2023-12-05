@@ -52,7 +52,10 @@ const ContentPreview: FC<IProps> = ({ name, namePrefix, question, field }) => {
             {question.type !== SopCheckItemEnum.FileType && (
               <View style={styles.wrap}>
                 <Text style={styles.text}>
-                  {maybeTips(result || '未填写', remark)}
+                  {maybeTips(
+                    result || result === 0 ? result : '未填写',
+                    remark,
+                  )}
                 </Text>
               </View>
             )}
