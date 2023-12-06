@@ -52,7 +52,7 @@ const FileFormItem: FC<IProps> = ({ form, question, name, uploadProps }) => {
             'cropCameraVideo',
             'visionCamera',
           ]}
-          maxCount={10}
+          maxCount={30}
           tipText="图片/视频"
           {...uploadProps}
         />
