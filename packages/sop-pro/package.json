@@ -1,6 +1,6 @@
 {
   "name": "@fruits-chain/sop-pro",
-  "version": "1.6.5",
+  "version": "1.6.6",
   "description": "A higher abstracted component for sop",
   "scripts": {
     "clean": "rimraf lib",
@@ -51,7 +51,7 @@
     "@fruits-chain/graphql-codegen-preset": "^0.3.1",
     "@fruits-chain/react-native-upload": "^2.4.0",
     "@fruits-chain/react-native-xiaoshu": "^0.3.12",
-    "@fruits-chain/sop": "^1.6.5",
+    "@fruits-chain/sop": "^1.6.6",
     "@fruits-chain/upload": "^1.6.0",
     "@react-native-community/geolocation": "^3.0.6",
     "@types/react": "^18.2.9",
